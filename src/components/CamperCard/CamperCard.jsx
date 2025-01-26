@@ -1,1 +1,2 @@
-import css from './ProductCard.module.css'
+import css from './CamperCard.module.css';
+import Icon from '../Icon/Icon.jsx';
