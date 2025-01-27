@@ -1,14 +1,21 @@
-import HomePage from './pages/HomePage/HomePage'
-import Header from './components/Header/Header'
-import './App.css'
+import { lazy, Suspense} from 'react';
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
+
+
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'))
+const CatalogPage = lazy(() => import ('./pages/CatalogPage/CatalogPage'))
 
 function App() {
-
-
   return (
     <>
-      <Header />
-      <HomePage />
+  <Suspense>
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path='/catalog' element={<CatalogPage />} />
+        </Routes> 
+ </Suspense>
     </>
   );
 }

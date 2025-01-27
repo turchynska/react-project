@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
+import Header from "../../components/Header/Header";
 import css from './HomePage.module.css';
 
 const HomePage = () => {
     return (
       <>
+        <Header/>
         <Container>
           <div className={css.heroImg}>
             <div className={css.container}>
