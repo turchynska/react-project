@@ -1,6 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCampers, getCamperById } from "./operations.js";
 
+const initialState = {
+  items: [],
+  total: 0,
+  page: 1,
+  favoriteItem: [],
+  isLoading: false,
+  error: null,
+  camper: null,
+};
+
 const campersSlice = createSlice({
   name: "campers",
   initialState,
@@ -33,12 +43,12 @@ const campersSlice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.items.push(...payload.items);
+        state.items = payload.items; 
         state.total = payload.total;
       })
       .addCase(fetchCampers.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload;
+        state.error = payload ? payload.message : "An error occurred";
       })
       .addCase(getCamperById.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -50,10 +60,11 @@ const campersSlice = createSlice({
       })
       .addCase(getCamperById.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload;
+        state.error = payload ? payload.message : "An error occurred";
       });
   },
 });
 
-export const { clearItems, setPage, addToFavorite, deleteFromFavorite } = campersSlice.actions;
+export const { clearItems, setPage, addToFavorite, deleteFromFavorite } =
+  campersSlice.actions;
 export default campersSlice.reducer;
