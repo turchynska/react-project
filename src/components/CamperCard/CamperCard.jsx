@@ -17,10 +17,12 @@ import { clsx } from 'clsx';
 
 const CamperCard = ({ camper }) => {
     const dispatch = useDispatch();
-    const favorite = useSelector(selectFavoriteItems);
+    const favoriteItems = useSelector(selectFavoriteItems);
 
     const [imageLoaded, setImageLoaded] = useState(false);
-    const isFavorite = favorite.find(favorite => favorite.id === camper.id);
+  const isFavorite =
+    Array.isArray(favoriteItems) &&
+    favoriteItems.find((favorite) => favorite.id === camper.id);
 
     const handleClick = () => {
         if (isFavorite) {

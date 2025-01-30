@@ -1,34 +1,32 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import CamperCard from "../CamperCard/CamperCard";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../../redux/campers/operations.js";
+import CamperCard from "../CamperCard/CamperCard";
 
 const CampersList = () => {
-  const [campers, setCampers] = useState([]);
   const dispatch = useDispatch();
+  const campers = useSelector((state) => state.campers.items);
+  const isLoading = useSelector((state) => state.campers.isLoading);
+  const error = useSelector((state) => state.campers.error);
 
   useEffect(() => {
-    const fetchCampersData = async () => {
-      try {
-        const data = await dispatch(fetchCampers());
-        setCampers(data);
-      } catch (error) {
-        console.error("Error fetching campers:", error);
-      }
-    };
+    console.log("Fetching campers...");
+    dispatch(fetchCampers({ page: 1, perPage: 10 }));
+  }, [dispatch]);;
 
-    fetchCampersData();
-  }, [dispatch]);
+  if (isLoading) return <p>Loading campers...</p>;
+  if (error) return <p>Error loading campers: {error}</p>;
 
+
+  console.log(campers);  // Додай це для перевірки
   return (
     <div>
       {campers.length > 0 ? (
-        campers.map((camper) => <CamperCard key={camper.id} data={camper} />)
+        campers.map((camper) => <CamperCard key={camper.id} camper={camper} />)
       ) : (
-        <p>Loading campers...</p>
+        <p>No campers available.</p>
       )}
     </div>
   );
-};
-
-export default CampersList;
+}
+  export default CampersList;
