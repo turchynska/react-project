@@ -10,8 +10,8 @@ const LocationRating = ({id, rating, location, numberReviews, className = ""}) =
         <Link className={css.reviews} to={`/catalog/${id}/reviews`}>
           {rating}({numberReviews}Reviews)
         </Link>
-            <Icon id="icon-Map" width={16} height={16} className={css.map} />
-            <p>{location}</p>
+        <Icon id="icon-Map" width={16} height={16} className={css.map} />
+        <p>{location}</p>
       </div>
     );
 }

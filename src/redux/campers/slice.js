@@ -43,8 +43,8 @@ const campersSlice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.items = payload.items || payload; // Якщо відповіді мають об'єкт з полем items
-        state.total = payload.total || payload.length; // Якщо total є в відповіді
+        state.items = payload.items || payload;
+        state.total = payload.total || payload.length; 
       })
       .addCase(fetchCampers.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -53,7 +53,7 @@ const campersSlice = createSlice({
       .addCase(getCamperById.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.camper = payload || null; // Перевірка на випадок відсутності даних
+        state.camper = payload || null; 
       })
       .addCase(getCamperById.pending, (state) => {
         state.isLoading = true;

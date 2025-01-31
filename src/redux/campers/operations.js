@@ -11,10 +11,8 @@ export const fetchCampers = createAsyncThunk(
       const res = await axios.get(
         `/campers?page=${page}&limit=${perPage}${filter ? `&${filter}` : ""}`
       );
-      console.log("API response:", res.data);
       return res.data;
     } catch (error) {
-      console.error("Error fetching campers:", error); // Додайте виведення помилки в консоль
       if (error.response && error.response.status === 404) {
         toast.error("Not found, try changing filter");
       } else {
@@ -25,7 +23,7 @@ export const fetchCampers = createAsyncThunk(
   }
 );
 
-// GET @ /campers/:camperId
+
 export const getCamperById = createAsyncThunk(
   "campers/getCamperInfo",
   async (camperId, thunkAPI) => {

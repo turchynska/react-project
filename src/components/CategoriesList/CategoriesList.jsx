@@ -3,10 +3,10 @@ import Icon from '../Icon/Icon';
 
 const CategoriesList = ({icon, text}) => {
     return (
-    <div className={css.container}>
-            <Icon id={icon} width={20} height={20} className={css.icon} />
-            <p className={css.text}>{text}</p>
-    </div>
-)
+      <div className={css.container}>
+            <Icon id={icon} width={20} height={16} className={css.icon} />
+        <p className={css.text}>{text}</p>
+      </div>
+    );
 }
 export default CategoriesList;

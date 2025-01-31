@@ -10,15 +10,12 @@ const CampersList = () => {
   const error = useSelector((state) => state.campers.error);
 
   useEffect(() => {
-    console.log("Fetching campers...");
+   
     dispatch(fetchCampers({ page: 1, perPage: 10 }));
   }, [dispatch]);;
 
   if (isLoading) return <p>Loading campers...</p>;
   if (error) return <p>Error loading campers: {error}</p>;
-
-
-  console.log(campers);  // Додай це для перевірки
   return (
     <div>
       {campers.length > 0 ? (
