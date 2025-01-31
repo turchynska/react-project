@@ -49,8 +49,19 @@ padding: 0;
 .icon:hover{
 color: var(--button);
 }
+.addFavorite {
+  background: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .favorite{
    color: var(--button); 
+   
 }
 .text{
   text-overflow: ellipsis;

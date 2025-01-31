@@ -31,8 +31,7 @@ const CamperCard = ({ camper }) => {
         }
         dispatch(addToFavorite(camper))
     };
-            console.log("camper:", camper);
-            console.log("camper.image:", camper?.image);
+
     return (
       <div className={css.container}>
         <div className={css.wrapperForImage}>

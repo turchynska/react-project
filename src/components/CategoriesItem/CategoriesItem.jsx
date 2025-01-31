@@ -2,10 +2,13 @@ import CategoriesList from "../CategoriesList/CategoriesList";
 import css from "./CategoriesItem.module.css";
 
 const CategoriesItem = ({ camper }) => {
+  console.log(camper); 
   return (
     <div className={css.container}>
       <CategoriesList icon="icon-diagram" text={camper.transmission} />
-      <CategoriesList icon="icon-Patrol" text={camper.engine} />
+      {camper.engine && (
+        <CategoriesList icon="icon-Patrol" text={camper.engine} />
+      )}
       {camper.kitchen && <CategoriesList icon="icon-kitchen" text="Kitchen" />}
       {camper.AC && <CategoriesList icon="icon-AC" text="AC" />}
       {camper.radio && <CategoriesList icon="icon-radios" text="Radio" />}
@@ -14,7 +17,7 @@ const CategoriesItem = ({ camper }) => {
         <CategoriesList icon="icon_fridge" text="Refrigerator" />
       )}
       {camper.microwave && (
-        <CategoriesList icon="icon-microwave" text="Microwave" />
+        <CategoriesList icon="icon_microwave" text="Microwave" />
       )}
       {camper.bathroom && <CategoriesList icon="icon_shower" text="Bathroom" />}
       {camper.water && <CategoriesList icon="icon_water" text="Water" />}
