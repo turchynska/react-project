@@ -1,6 +1,6 @@
 import Header from '../../components/Header/Header';
 import CampersList from '../../components/CampersList/CampersList';
-// import Filters from '../../components/Filters/Filters';
+import Filters from '../../components/Filters/Filters';
 import css from './CatalogPage.module.css';
 
 const Catalog = () => {
@@ -8,7 +8,7 @@ const Catalog = () => {
         <div>
             <Header />
             <div className={css.container}>
-                {/* <Filters /> */}
+                <Filters />
                 <CampersList/>
             </div>
         </div>
