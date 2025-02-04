@@ -69,7 +69,8 @@ const Filters = () => {
         dispatch(changeFilter(queryString));
         dispatch(clearItems([]))
     };
-    return (
+  return (
+    <div className={css.mainContainer}>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ values, setFieldValue }) => (
           <Form className={css.container}>
@@ -250,11 +251,14 @@ const Filters = () => {
                 <Icon id="icon-bi_grid-3x3-gap" width={32} height={32} />
                 Alcove
               </label>
-                    </div>
-                    <Button type="submit" className={css.btn}>Search</Button>
+            </div>
+            <Button type="submit" className={css.btn}>
+              Search
+            </Button>
           </Form>
         )}
       </Formik>
-    );
+    </div>
+  );
 }
 export default Filters

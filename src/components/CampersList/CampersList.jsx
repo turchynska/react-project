@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import css from './CampersList.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../../redux/campers/operations.js";
 import CamperCard from "../CamperCard/CamperCard";
@@ -17,9 +18,13 @@ const CampersList = () => {
   if (isLoading) return <p>Loading campers...</p>;
   if (error) return <p>Error loading campers: {error}</p>;
   return (
-    <div>
+    <div >
       {campers.length > 0 ? (
-        campers.map((camper) => <CamperCard key={camper.id} camper={camper} />)
+        campers.map((camper) => (
+          
+        <li key={camper.id} className={css.itemCard}>
+            <CamperCard camper={camper} />
+            </li>))
       ) : (
         <p>No campers available.</p>
       )}

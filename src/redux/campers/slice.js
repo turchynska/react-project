@@ -1,29 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCampers, getCamperById } from "./operations.js";
 
-const initialState = {
-  items: [],
-  total: 0,
-  page: 1,
-  favoriteItem: [],
-  isLoading: false,
-  error: null,
-  camper: null,
-};
+
 
 const campersSlice = createSlice({
   name: "campers",
-  initialState,
+  initialState: {
+    items: [],
+    favoriteItem: [],
+    total: 0,
+    page: 1,
+    perPage: 4,
+    camper: null,
+    isLoading: false,
+    error: null,
+  },
   reducers: {
-    clearItems: (state) => {
-      Object.assign(state, {
-        items: [],
-        total: 0,
-        page: 1,
-      });
+    clearItems(state) {
+      state.items = [];
+      state.total = 0;
+      state.page = 1;
     },
-    setPage: (state) => {
-      state.page += 1;
+    setPage(state) {
+      state.page = state.page + 1;
     },
     addToFavorite: (state, { payload }) => {
       state.favoriteItem.push(payload);
@@ -44,7 +43,7 @@ const campersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = payload.items || payload;
-        state.total = payload.total || payload.length; 
+        state.total = payload.total || payload.length;
       })
       .addCase(fetchCampers.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -53,7 +52,7 @@ const campersSlice = createSlice({
       .addCase(getCamperById.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.camper = payload || null; 
+        state.camper = payload || null;
       })
       .addCase(getCamperById.pending, (state) => {
         state.isLoading = true;

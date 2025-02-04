@@ -1,43 +1,115 @@
-.btnFilter{
-
+.mainContainer {
+  margin-right: 64px;
 }
 
-.container{
+.btnFilter {
+  background: none;
 
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
-.label{
-
+.container {
+  width: 360px;
 }
 
-.iconContainer{
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
 
+  color: var(--gray);
 }
 
-.icon{
-
+.iconContainer {
+  position: relative;
 }
 
-.input{
-
+.icon {
+  position: absolute;
+  left: 18px;
+  top: 26px;
+  pointer-events: none;
+  background: none;
 }
 
-.text{
+.input {
+  border-radius: 12px;
+  padding: 16px 20px 16px 46px;
+  width: 100%;
+  background: var(--inputs);
+  margin-top: 8px;
+  border: none;
 
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--main);
 }
 
-.subTitle{
+.subTitle {
+font-weight: 600;
+font-size: 20px;
+line-height: 1.2;
+color: var(--main);
+font-family: var( --font-family);
 
+  margin-top: 32px;
+  margin-bottom: 24px;
 }
 
-.filtersBox{
+.filtersBox {
+  border-top: 2px solid var(--gray-light);
+  padding-top: 24px;
 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 12px;
+
+  & label {
+    border: 1px solid var(--gray-light);
+    border-radius: 12px;
+    padding: 16px;
+    width: 112px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+  }
+  & input[type="checkbox"] {
+    display: none;
+  }
+
+  & input[type="radio"] {
+    display: none;
+  }
+  & svg {
+    margin-bottom: 8px;
+  }
+
+  & .active {
+    border-color: var(--button);
+  }
 }
 
-.active{
+.btn {
+  display: block;
+  letter-spacing: -0.01em;
+  color: var(--white);
 
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 166px;
+  margin-top: 40px;
+
+  text-align: center;
+  background-color: var(--button);
 }
 
-.btn{
-    
+.btn:hover {
+  background: var(--button);
 }

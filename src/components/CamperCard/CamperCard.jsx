@@ -2,6 +2,7 @@ import css from './CamperCard.module.css';
 import LocationRating from '../Location&Rating/LocationRating';
 import CategoriesItem from '../CategoriesItem/CategoriesItem';
 import PriceTag from '../PriceTag/PriceTag';
+import imgDefault from '../../img/imgDefault.jpg'
 import Icon from '../Icon/Icon';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -19,7 +20,6 @@ const CamperCard = ({ camper }) => {
     const dispatch = useDispatch();
     const favoriteItems = useSelector(selectFavoriteItems);
 
-    const [imageLoaded, setImageLoaded] = useState(false);
   const isFavorite =
     Array.isArray(favoriteItems) &&
     favoriteItems.find((favorite) => favorite.id === camper.id);
@@ -36,11 +36,14 @@ const CamperCard = ({ camper }) => {
       <div className={css.container}>
         <div className={css.wrapperForImage}>
           <img
-            src={camper.gallery?.[0]?.original || "default-imag.jpg"}
-            alt={camper.name}
             className={css.image}
-            height={320}
-            onLoad={() => setImageLoaded(true)}
+            src={
+              camper.gallery[0].thumb !== null
+                ? camper.gallery[0].thumb
+                : imgDefault
+            }
+            alt={camper.name}
+            height="320"
           />
         </div>
         <div className={css.containerDescr}>
