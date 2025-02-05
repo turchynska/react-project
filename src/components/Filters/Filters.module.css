@@ -32,6 +32,7 @@
   top: 26px;
   pointer-events: none;
   background: none;
+  fill: currentColor;
 }
 
 .input {

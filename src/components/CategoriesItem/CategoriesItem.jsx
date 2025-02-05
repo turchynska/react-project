@@ -2,7 +2,6 @@ import CategoriesList from "../CategoriesList/CategoriesList";
 import css from "./CategoriesItem.module.css";
 
 const CategoriesItem = ({ camper }) => {
-  console.log(camper); 
   return (
     <div className={css.container}>
       <CategoriesList icon="icon-diagram" text={camper.transmission} />
