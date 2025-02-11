@@ -1,27 +1,29 @@
-.mainContainer{
- padding: 48px 64px;
-  padding-top: 120px;
+.headerCont{
+  margin-bottom: 48%;
+}
+.mainContainer {
+  padding: 64px;
 }
 
-.title{
+.title {
   line-height: 1.33;
   margin-bottom: 8px;
 
   color: var(--main);
 }
 
-.rating{
-margin-bottom: 16px;
+.rating {
+  margin-bottom: 16px;
 }
 
-.listImg{
+.listImg {
   margin: 28px 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 48px;
 }
 
-.item{
+.item {
   border-radius: 10px;
   height: 312px;
   position: relative;
@@ -29,25 +31,25 @@ margin-bottom: 16px;
   cursor: pointer;
 }
 
-.img{
+.img {
   width: 100%;
   height: 105%;
   object-fit: cover;
   object-position: center;
 }
 
-.text{
- margin-bottom: 60px;
+.text {
+  margin-bottom: 60px;
 }
 
-.listInfo{
+.listInfo {
   display: flex;
   margin-bottom: 44px;
 
   border-bottom: 2px solid var(--gray-light);
 }
 
-.itemInfo{
+.itemInfo {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 20px;
@@ -63,17 +65,22 @@ margin-bottom: 16px;
   }
 }
 
-.isActive{
-composes: itemInfo;
+.isActive {
+  composes: itemInfo;
   border-bottom: 5px solid var(--button);
 }
 
-
-.containerBooking{
-width: 631px;
+.containerBooking {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
 }
 
-.containerFeatures{
-display: flex;
+.containerFeatures {
+  flex: 1;
 }
-
+.bookForm {
+  width: 400px;
+  flex-shrink: 0;
+}

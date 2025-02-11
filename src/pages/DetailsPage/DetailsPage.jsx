@@ -1,6 +1,7 @@
 import css from './DetailsPage.module.css';
 import PriceTag from '../../components/PriceTag/PriceTag.jsx';
 import LocationRating from '../../components/Location&Rating/LocationRating.jsx';
+import  Header from '../../components/Header/Header.jsx';
 import ImageDetailsModal from '../../components/ImageDetailsModal/ImageDetailsModal.jsx';
 import BookForm from '../../components/BookForm/BookForm.jsx';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,7 +33,9 @@ const DetailsPage = () => {
       };
 
     return (
-      camper && (
+      <>
+      <Header className={css.headerCont}/>
+        {camper && (
         <div className={css.mainContainer}>
           <h2 className={css.title}>{camper.name}</h2>
           <LocationRating
@@ -55,41 +58,57 @@ const DetailsPage = () => {
                 />
               </li>
             ))}
-                </ul>
-                <p className={css.text}>{camper.description}</p>
-                <ul className={css.listInfo}>
-                    <li className={css.itemInfo}>
-                        <NavLink default to='features' 
-                        className={({isActive}) => (isActive ? css.active : undefined)}>Features</NavLink>
-                    </li>
-                    <li className={css.listInfo}>
-                        <NavLink default to='reviews'
-                        className={({isActive}) => (isActive ? css.active : undefined)}>Reviews</NavLink>
-                    </li>
-                </ul>
-                <div className={css.containerBooking}>
-                    <div className={css.containerFeatures}>
-                        <Suspense
-                            fallback={
-                                <Audio  visible={true}
-                                   width="200"
-                                   color="#4fa94d"
-                                   ariaLabel="audio-spin-loading"
-                                 />
-                        }
-                        >
-                            <Outlet/>
-                        </Suspense>
-                    </div>
-                    <BookForm/>
-                </div>
-                <ImageDetailsModal
-                    modalIsOpen={showModal}
-                    closeModal={closeModal}
-                    src={modalUrl}
-                />
+          </ul>
+          <p className={css.text}>{camper.description}</p>
+          <ul className={css.listInfo}>
+            <li className={css.itemInfo}>
+              <NavLink
+                default
+                to="features"
+                className={({ isActive }) =>
+                  isActive ? css.active : undefined
+                }
+              >
+                Features
+              </NavLink>
+            </li>
+            <li className={css.listInfo}>
+              <NavLink
+                default
+                to="reviews"
+                className={({ isActive }) =>
+                  isActive ? css.active : undefined
+                }
+              >
+                Reviews
+              </NavLink>
+            </li>
+          </ul>
+          <div className={css.containerBooking}>
+            <div className={css.containerFeatures}>
+              <Suspense
+                fallback={
+                  <Audio
+                    visible={true}
+                    width="200"
+                    color="#4fa94d"
+                    ariaLabel="audio-spin-loading"
+                  />
+                }
+              >
+                <Outlet />
+              </Suspense>
+            </div>
+            <BookForm className={css.bookForm} />
+          </div>
+          <ImageDetailsModal
+            modalIsOpen={showModal}
+            closeModal={closeModal}
+            src={modalUrl}
+          />
         </div>
-      )
+        )}
+      </>
     );
 }
 export default DetailsPage;
