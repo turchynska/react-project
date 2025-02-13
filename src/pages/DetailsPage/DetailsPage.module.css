@@ -64,7 +64,6 @@
     margin: 0;
   }
 }
-
 .isActive {
   composes: itemInfo;
   border-bottom: 5px solid var(--button);

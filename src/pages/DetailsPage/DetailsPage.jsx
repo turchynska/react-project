@@ -34,79 +34,77 @@ const DetailsPage = () => {
 
     return (
       <>
-      <Header className={css.headerCont}/>
+        <Header className={css.headerCont} />
         {camper && (
-        <div className={css.mainContainer}>
-          <h2 className={css.title}>{camper.name}</h2>
-          <LocationRating
-            id={camperId}
-            rating={camper.rating}
-            numberReviews={camper.reviews.length}
-            location={camper.location}
-            className={css.rating}
-          />
-          <PriceTag price={camper.price} />
-          <ul className={css.listImg}>
-            {camper.gallery.map((picture) => (
-              <li key={picture.thumb} className={css.item}>
-                <img
-                  src={picture.thumb}
-                  className={css.img}
-                  onClick={() => {
-                    openModal(picture.original);
-                  }}
-                />
-              </li>
-            ))}
-          </ul>
-          <p className={css.text}>{camper.description}</p>
-          <ul className={css.listInfo}>
-            <li className={css.itemInfo}>
-              <NavLink
-                default
-                to="features"
-                className={({ isActive }) =>
-                  isActive ? css.active : undefined
-                }
-              >
-                Features
-              </NavLink>
-            </li>
-            <li className={css.listInfo}>
-              <NavLink
-                default
-                to="reviews"
-                className={({ isActive }) =>
-                  isActive ? css.active : undefined
-                }
-              >
-                Reviews
-              </NavLink>
-            </li>
-          </ul>
-          <div className={css.containerBooking}>
-            <div className={css.containerFeatures}>
-              <Suspense
-                fallback={
-                  <Audio
-                    visible={true}
-                    width="200"
-                    color="#4fa94d"
-                    ariaLabel="audio-spin-loading"
+          <div className={css.mainContainer}>
+            <h2 className={css.title}>{camper.name}</h2>
+            <LocationRating
+              id={camperId}
+              rating={camper.rating}
+              numberReviews={camper.reviews.length}
+              location={camper.location}
+              className={css.rating}
+            />
+            <PriceTag price={camper.price} />
+            <ul className={css.listImg}>
+              {camper.gallery.map((picture) => (
+                <li key={picture.thumb} className={css.item}>
+                  <img
+                    src={picture.thumb}
+                    className={css.img}
+                    onClick={() => {
+                      openModal(picture.original);
+                    }}
                   />
-                }
-              >
-                <Outlet />
-              </Suspense>
+                </li>
+              ))}
+            </ul>
+            <p className={css.text}>{camper.description}</p>
+            <ul className={css.listInfo}>
+              <li className={css.itemInfo}>
+                <NavLink
+                  to="features"
+                  className={({ isActive }) =>
+                    isActive ? css.isActive : css.itemInfo
+                  }
+                >
+                  Features
+                </NavLink>
+              </li>
+              <li className={css.itemInfo}>
+                <NavLink
+                  to="reviews"
+                  className={({ isActive }) =>
+                    isActive ? css.isActive : css.itemInfo
+                  }
+                >
+                  Reviews
+                </NavLink>
+              </li>
+            </ul>
+            <div className={css.containerBooking}>
+              <div className={css.containerFeatures}>
+                <Suspense
+                  fallback={
+                    <Audio
+                      visible={true}
+                      width="200"
+                      color="#4fa94d"
+                      ariaLabel="audio-spin-loading"
+                    />
+                  }
+                >
+                  <Outlet />
+                </Suspense>
+              </div>
+              <BookForm className={css.bookForm} />
             </div>
-            <BookForm className={css.bookForm} />
+            <ImageDetailsModal
+              modalIsOpen={showModal}
+              closeModal={closeModal}
+              src={modalUrl}
+            />
           </div>
-          <ImageDetailsModal
-            modalIsOpen={showModal}
-            closeModal={closeModal}
-            src={modalUrl}
-          />
-        </div>
         )}
       </>
     );
