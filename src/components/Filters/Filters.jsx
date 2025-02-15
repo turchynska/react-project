@@ -1,6 +1,6 @@
 import css from './Filters.module.css';
 import Icon from '../Icon/Icon';
-import Button from '../Button/Button';
+// import Button from '../Button/Button';
 import { Form, Field, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { changeFilter } from '../../redux/filters/filtersSlice.js';
@@ -25,7 +25,6 @@ const Filters = () => {
         },
         type: '',
     };
-
     const chooseTransmission = [
         { value: 'automatic', label: "Automatic" },
         { value: 'manual', label: "Manual" },
@@ -54,9 +53,11 @@ const Filters = () => {
         );
     };
 
-    const handleSubmit = values => {
+  const handleSubmit = values => {
+  
         const arr = [];
-        values.location && arr.push(`location=${values.location}`);
+      values.location && arr.push(`location=${values.location}`);
+      
         values.type && arr.push(`form=${values.type}`);
 
         const query = Object.fromEntries(
@@ -66,7 +67,8 @@ const Filters = () => {
         );
 
         const queryString = new URLSearchParams(query).toString() + '&' + arr.join('&');
-        dispatch(changeFilter(queryString));
+    dispatch(changeFilter(queryString));
+    
         dispatch(clearItems([]))
     };
   return (
@@ -238,8 +240,8 @@ const Filters = () => {
               >
                 <Field
                   type="radio"
-                  name="alcove"
-                  value="alcove"
+                  name="type"
+                  value="panelTruck"
                   onClick={() => {
                     if (values.type === "alcove") {
                       setFieldValue("type", "");
@@ -252,9 +254,9 @@ const Filters = () => {
                 Alcove
               </label>
             </div>
-            <Button type="submit" className={css.btn}>
+            <button type="submit" className={css.btn} >
               Search
-            </Button>
+            </button>
           </Form>
         )}
       </Formik>
